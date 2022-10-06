@@ -1,11 +1,16 @@
 import React from 'react';
+import { Container } from '@mui/material';
 import Header from './Header';
+import Main from './Main';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Header />
-    </div>
+      <Container sx={{ mt: 4 }}>
+        <Main />
+      </Container>
+    </>
   );
 }
 
