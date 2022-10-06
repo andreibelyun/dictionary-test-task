@@ -26,6 +26,8 @@
       1,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
-    "comma-dangle": ["error", "never"]
+    "comma-dangle": ["error", "never"],
+    "object-curly-newline": "off",
+    "linebreak-style": "off"
   }
 }
