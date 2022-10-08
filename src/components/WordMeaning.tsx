@@ -24,14 +24,20 @@ function WordMeaning({ meaning }: Props) {
         )}
 
         {meaning.synonyms?.length > 0 && (
-          <Typography variant="body1">
-            {`Synonyms: ${meaning.synonyms.join(', ')}.`}
-          </Typography>
+          <>
+            <Typography variant="h6">Synonyms:</Typography>
+            <Typography variant="body1">
+              {meaning.synonyms.join(', ')}
+            </Typography>
+          </>
         )}
         {meaning.antonyms?.length > 0 && (
-          <Typography variant="body1">
-            {`Antonyms: ${meaning.antonyms.join(', ')}.`}
-          </Typography>
+          <>
+            <Typography variant="h6">Antonyms:</Typography>
+            <Typography variant="body1">
+              {meaning.antonyms.join(', ')}
+            </Typography>
+          </>
         )}
       </CardContent>
     </Card>

@@ -10,7 +10,7 @@ function Definition({ definition }: Props) {
   return (
     <div>
       {definition.definition && (
-        <Typography variant="body1">{definition.definition}</Typography>
+        <Typography variant="body1">{`- ${definition.definition}`}</Typography>
       )}
       {definition.example && (
         <Typography variant="body2">{`(For example: ${definition.example})`}</Typography>
