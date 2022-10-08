@@ -30,10 +30,18 @@
     "object-curly-newline": "off",
     "linebreak-style": "off",
     "jsx-a11y/media-has-caption": "off",
+    "import/prefer-default-export": "off",
     "operator-linebreak": [
       "error",
       "after",
       { "overrides": { "&&": "ignore", "||": "ignore" } }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state"]
+      }
     ]
   }
 }
