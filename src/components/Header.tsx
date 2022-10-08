@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   AppBar,
   Container,
@@ -15,6 +16,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 function Header() {
   const [isNavOpen, setIsNavOpen] = React.useState<null | HTMLElement>(null);
 
+  const navigate = useNavigate();
+
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setIsNavOpen(event.currentTarget);
   };
@@ -23,18 +26,37 @@ function Header() {
     setIsNavOpen(null);
   };
 
+  const handleClickToMain = () => {
+    navigate('/pages/main');
+    handleCloseNavMenu();
+  };
+
+  const handleClickToResult = () => {
+    navigate('/pages/result');
+    handleCloseNavMenu();
+  };
+
   return (
     <header>
       <AppBar position="static">
         <Container>
           <Toolbar>
-            <Typography variant="h5" component="span" sx={{ flexGrow: 1 }}>
+            <Typography
+              onClick={handleClickToMain}
+              variant="h5"
+              component="span"
+              sx={{ flexGrow: 1 }}
+            >
               Dictionary
             </Typography>
 
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button color="inherit">Main</Button>
-              <Button color="inherit">Result</Button>
+              <Button onClick={handleClickToMain} color="inherit">
+                Main
+              </Button>
+              <Button onClick={handleClickToResult} color="inherit">
+                Result
+              </Button>
             </Box>
 
             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -63,10 +85,10 @@ function Header() {
                   display: { xs: 'block', md: 'none' }
                 }}
               >
-                <MenuItem key="main" onClick={handleCloseNavMenu}>
+                <MenuItem key="main" onClick={handleClickToMain}>
                   <Typography textAlign="center">Main</Typography>
                 </MenuItem>
-                <MenuItem key="result" onClick={handleCloseNavMenu}>
+                <MenuItem key="result" onClick={handleClickToResult}>
                   <Typography textAlign="center">Result</Typography>
                 </MenuItem>
               </Menu>

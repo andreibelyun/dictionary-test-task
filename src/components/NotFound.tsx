@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { Box, Typography, Button } from '@mui/material';
 
 function NotFound() {
@@ -23,7 +24,9 @@ function NotFound() {
       <Typography variant="h4" sx={{ textAlign: 'center', mb: 4 }}>
         Page not found
       </Typography>
-      <Button>Go to homepage</Button>
+      <NavLink to="/pages/main" style={{ textDecoration: 'none' }}>
+        <Button>Go to homepage</Button>
+      </NavLink>
     </Box>
   );
 }
