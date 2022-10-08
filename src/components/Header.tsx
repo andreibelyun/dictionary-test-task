@@ -41,12 +41,7 @@ function Header() {
       <AppBar position="static">
         <Container>
           <Toolbar>
-            <Typography
-              onClick={handleClickToMain}
-              variant="h5"
-              component="span"
-              sx={{ flexGrow: 1 }}
-            >
+            <Typography variant="h5" component="span" sx={{ flexGrow: 1 }}>
               Dictionary
             </Typography>
 
