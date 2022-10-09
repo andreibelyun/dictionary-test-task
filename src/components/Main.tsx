@@ -7,6 +7,7 @@ import {
   Button,
   CircularProgress
 } from '@mui/material';
+import { Word } from '../types/word';
 import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import { fetchWord } from '../features/word/wordSlice';
 
@@ -22,8 +23,10 @@ function Main() {
     setSearchKey(e.target.value);
   };
 
-  const handleSearchSuccess = () => {
+  const handleSearchSuccess = (data: Word[]) => {
     navigate('/pages/result');
+    localStorage.clear();
+    localStorage.words = JSON.stringify(data);
   };
 
   const handleSearchFail = () => {
