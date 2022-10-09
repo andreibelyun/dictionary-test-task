@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuid } from 'uuid';
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import WordMeaning from './WordMeaning';
 import { Word } from '../types/word';
@@ -35,10 +36,7 @@ function WordCard({ word }: Props) {
 
           {word.phonetics?.length > 0 &&
             word.phonetics.map((phonetic) => (
-              <Box
-                key={phonetic.text}
-                sx={{ width: { xs: '100%', sm: '450px' } }}
-              >
+              <Box key={uuid()} sx={{ width: { xs: '100%', sm: '450px' } }}>
                 <Typography
                   variant="body1"
                   component="p"
@@ -67,7 +65,9 @@ function WordCard({ word }: Props) {
           )}
 
           {word.meanings &&
-            word?.meanings.map((meaning) => <WordMeaning meaning={meaning} />)}
+            word?.meanings.map((meaning) => (
+              <WordMeaning meaning={meaning} key={uuid()} />
+            ))}
         </CardContent>
       </Card>
     </article>

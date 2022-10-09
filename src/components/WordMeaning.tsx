@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuid } from 'uuid';
 import { Card, CardContent, Typography } from '@mui/material';
 import Definition from './Definition';
 import { MeaningItem } from '../types/word';
@@ -18,7 +19,7 @@ function WordMeaning({ meaning }: Props) {
           <>
             <Typography variant="h6">Definitions:</Typography>
             {meaning.definitions.map((definition) => (
-              <Definition definition={definition} />
+              <Definition definition={definition} key={uuid()} />
             ))}
           </>
         )}

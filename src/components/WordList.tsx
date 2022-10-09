@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuid } from 'uuid';
 import WordCard from './WordCard';
 import { useAppSelector } from '../utils/hooks';
 
@@ -8,7 +9,7 @@ function WordList() {
   return (
     <section>
       {words.words.map((word) => (
-        <WordCard word={word} />
+        <WordCard word={word} key={uuid()} />
       ))}
     </section>
   );
