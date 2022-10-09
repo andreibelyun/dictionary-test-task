@@ -6,6 +6,7 @@ import Header from './Header';
 import NotFound from './NotFound';
 import Result from './Result';
 import Main from './Main';
+import DirectLinkSearcher from './DirectLinkSearcher';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path="/" element={<Navigate to="/pages/main" />} />
           <Route path="/pages/main" element={<Main />} />
           <Route path="/pages/result" element={<Result />} />
-          <Route path="/:word" element={<NotFound />} />
+          <Route path="/:word" element={<DirectLinkSearcher />} />
           <Route path={'*' || '/pages/not-found'} element={<NotFound />} />
         </Routes>
       </Container>
