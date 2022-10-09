@@ -67,12 +67,12 @@ function Header() {
                 anchorEl={isNavOpen}
                 anchorOrigin={{
                   vertical: 'bottom',
-                  horizontal: 'left'
+                  horizontal: 'right'
                 }}
                 keepMounted
                 transformOrigin={{
                   vertical: 'top',
-                  horizontal: 'left'
+                  horizontal: 'right'
                 }}
                 open={Boolean(isNavOpen)}
                 onClose={handleCloseNavMenu}

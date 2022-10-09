@@ -36,7 +36,7 @@ function WordCard({ word }: Props) {
 
           {word.phonetics?.length > 0 &&
             word.phonetics.map((phonetic) => (
-              <Box key={uuid()} sx={{ width: { xs: '100%', sm: '450px' } }}>
+              <Box key={uuid()} sx={{ width: { xs: '100%', sm: '60%', md: '50%' } }}>
                 <Typography
                   variant="body1"
                   component="p"
@@ -45,7 +45,7 @@ function WordCard({ word }: Props) {
                   {phonetic.text}
                 </Typography>
                 {phonetic.audio && (
-                  <audio controls autoPlay={false}>
+                  <audio controls autoPlay={false} style={{ width: '100%' }}>
                     <source src={phonetic.audio} type="audio/mpeg" />
                   </audio>
                 )}

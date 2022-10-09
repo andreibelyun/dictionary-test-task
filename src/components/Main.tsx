@@ -48,7 +48,7 @@ function Main() {
           mb: 4
         }}
       >
-        Start search
+        Start your search
       </Typography>
       <form onSubmit={handleSearch}>
         <Box
@@ -64,7 +64,7 @@ function Main() {
             onChange={handleInput}
             placeholder="Type word here ..."
             sx={{
-              width: { xs: '80%', md: '60%' },
+              width: '60%',
               mr: '5px'
             }}
           />
