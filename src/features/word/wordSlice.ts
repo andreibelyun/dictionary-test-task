@@ -4,40 +4,42 @@ import { Word } from '../../types/word';
 
 type State = {
   words: Word[];
-  status: string;
-  error: string;
+  loading: boolean;
+  error: string | null;
 };
 
 const initialState: State = {
   words: [],
-  status: '',
+  loading: false,
   error: ''
 };
 
+export const fetchWord = createAsyncThunk<
+  Word[],
+  string,
+  { rejectValue: string }
+>('word/fetchWord', (text, { rejectWithValue }) => getWord(text)
+  .then((data) => data)
+  .catch((error) => rejectWithValue(error.message)));
+
 export const wordSlice = createSlice({
-  name: 'word',
+  name: 'words',
   initialState,
-  reducers: {
-    setWord: (state, action) => {
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchWord.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(fetchWord.fulfilled, (state, action) => {
       state.words = action.payload;
-    }
-  }
-  // extraReducers {
-  //     [fetchWord.fulfilled]: () => { },
-  //     [fetchWord.pending]: () => { },
-  //     [fetchWord.rejected]: () => { },
-  // }
-});
-
-export const { setWord } = wordSlice.actions;
-
-export const fetchWord = createAsyncThunk(
-  'word/fetchWord',
-  (arg: string, thunkApi) => {
-    getWord(arg).then((data) => {
-      thunkApi.dispatch(setWord(data));
+      state.loading = false;
+    });
+    builder.addCase(fetchWord.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload || 'Default error';
     });
   }
-);
+});
 
 export default wordSlice.reducer;

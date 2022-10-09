@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Typography,
   TextField,
@@ -6,19 +7,35 @@ import {
   Button,
   CircularProgress
 } from '@mui/material';
+import { useAppDispatch, useAppSelector } from '../utils/hooks';
+import { fetchWord } from '../features/word/wordSlice';
 
 function Main() {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   const [searchKey, setSearchKey] = useState('');
 
-  const [loading, setLoading] = useState(true);
+  const { loading } = useAppSelector((state) => state.words);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchKey(e.target.value);
   };
 
+  const handleSearchSuccess = () => {
+    navigate('/pages/result');
+  };
+
+  const handleSearchFail = () => {
+    navigate('/pages/not-found');
+  };
+
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(!loading);
+    dispatch(fetchWord(searchKey))
+      .unwrap()
+      .then(handleSearchSuccess)
+      .catch(handleSearchFail);
   };
 
   return (

@@ -17,7 +17,7 @@ function App() {
           <Route path="/pages/main" element={<Main />} />
           <Route path="/pages/result" element={<Result />} />
           <Route path="/:word" element={<NotFound />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path={'*' || '/pages/not-found'} element={<NotFound />} />
         </Routes>
       </Container>
     </>

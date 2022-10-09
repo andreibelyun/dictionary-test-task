@@ -3,7 +3,7 @@ import wordReducer from '../features/word/wordSlice';
 
 const store = configureStore({
   reducer: {
-    word: wordReducer
+    words: wordReducer
   }
 });
 
